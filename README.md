@@ -4,6 +4,8 @@ A personal NFL statistics tracking app built with Nuxt 4.
 
 **⚠️ Work in Progress** - This app is currently under active development.
 
+**Preview URL** - https://nfl.marioniya.space/
+
 ## About
 
 This is a WIP site for NFL season stats I made for myself because I hate the UI of DAZN's app. Features:
