@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@theme {
+  --color-afc: var(--color-rose-700);
+  --color-nfc: var(--color-blue-800);
+  --font-sans: 'Share Tech Mono', sans-serif;
+  --font-mono: 'New Amsterdam', monospace;
+}
+
+::selection {
+  background-color: var(--ui-bg-accented);
+}
