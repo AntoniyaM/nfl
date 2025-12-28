@@ -10,9 +10,9 @@ A personal NFL statistics tracking app built with Nuxt 4.
 
 This is a WIP site for NFL season stats I made for myself because I hate the UI of DAZN's app. Features:
 
-- ✅ **Current week schedule** - View all games for the current NFL week
-- 🚧 **Teams, divisions, conferences** - Coming soon
-- 🚧 **Players database** - Coming soon
+- ✅ **Current week schedule** - View all games for the current week of the season
+- 🚧 **Teams, divisions, conferences** - WIP
+- 📇 **Players database** - Coming soon
 
 ## Setup
 
