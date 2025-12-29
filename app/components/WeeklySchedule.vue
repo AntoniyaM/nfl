@@ -68,7 +68,7 @@ const formatTime = (dateString: string) => {
     </template>
 
     <template v-else-if="schedule">
-      <div class="space-y-8">
+      <div>
         <div v-for="(events, date) in eventsByDate" :key="date">
           <h3 class="mb-4 text-xl font-semibold pb-2">
             {{ date }}
@@ -81,7 +81,7 @@ const formatTime = (dateString: string) => {
               :key="event.id"
               class="transition-all duration-300"
             >
-              <div class="space-y-3">
+              <div>
                 <div class="text-center">
                   <p class="text-sm font-medium text-muted">
                     {{ formatTime(event.date) }}
@@ -94,10 +94,10 @@ const formatTime = (dateString: string) => {
                   </p>
                 </div>
 
-                <div class="space-y-3">
+                <div>
                   <!-- Team 1. -->
                   <div v-if="event.competitors[1]" class="flex items-center justify-between p-2 rounded-md">
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
                       <img
                         :src="event.competitors[1].teamLogo.url"
                         :alt="event.competitors[1].teamLogo.alt"
@@ -117,7 +117,7 @@ const formatTime = (dateString: string) => {
 
                   <!-- Team 2. -->
                   <div v-if="event.competitors[0]" class="flex items-center justify-between p-2 rounded-md">
-                    <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
                       <img
                         :src="event.competitors[0].teamLogo.url"
                         :alt="event.competitors[0].teamLogo.alt"
