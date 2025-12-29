@@ -64,19 +64,21 @@ const groupedTeams = computed(() => {
           </div>
         </template>
 
-        <div v-for="division in item.divisions" :key="division.id">
-          <h3
-              class="mb-3 text-lg font-bold border-b pb-3"
-              :class="[item.id === 'afc' ? 'text-afc border-afc/30' : 'text-nfc border-nfc/30']"
-          >
-            {{ division.name }}
-          </h3>
-          <div class="grid grid-cols-2 gap-3">
-            <TeamCard
-                v-for="team in groupedTeams[item.id]?.[division.id!]"
-                :key="team.id"
-                :team="team"
-            />
+        <div class="grid gap-6">
+          <div v-for="division in item.divisions" :key="division.id">
+            <h3
+                class="mb-3 text-lg font-bold border-b pb-3"
+                :class="[item.id === 'afc' ? 'text-afc border-afc/30' : 'text-nfc border-nfc/30']"
+            >
+              {{ division.name }}
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <TeamCard
+                  v-for="team in groupedTeams[item.id]?.[division.id!]"
+                  :key="team.id"
+                  :team="team"
+              />
+            </div>
           </div>
         </div>
       </UCard>

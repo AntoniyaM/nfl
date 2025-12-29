@@ -7,20 +7,20 @@ defineProps<{
 </script>
 
 <template>
-  <NuxtLink :to="`/teams/${team.id}`" class="block transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+  <NuxtLink :to="`/teams/${team.id}`" class="block rounded-lg border border-muted overflow-hidden duration-300 hover:shadow-xl">
     <div
-      class="rounded-lg overflow-hidden shadow-md flex flex-col h-full"
+      class="flex flex-col h-full p-4 gap-4"
       :style="`background-color: #${team.color}25; border: 2px solid #${team.color}`">
-      <div class="p-4 flex items-center justify-between">
-        <div class="flex items-center">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4 min-h-20">
           <img :src="team.logoUrl" :alt="`${team.name} logo`" class="w-12 h-12 object-contain" />
           <div>
             <h3 class="text-lg font-bold" :style="`color: #${team.color}`">{{ team.name }}</h3>
-            <p class="text-sm text-gray-700">{{ team.seasonSummary }}</p>
+            <p class="text-sm text-muted">{{ team.seasonSummary }}</p>
           </div>
         </div>
       </div>
-      <div class="p-4 mt-auto border-t" :style="`border-color: #${team.color}50`">
+      <div class="mt-auto border-t border-muted pt-4">
         <p class="font-medium">{{ team.standingSummary }}</p>
       </div>
     </div>

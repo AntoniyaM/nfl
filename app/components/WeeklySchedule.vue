@@ -68,18 +68,16 @@ const formatTime = (dateString: string) => {
     </template>
 
     <template v-else-if="schedule">
-      <div>
+      <div class="grid gap-8">
         <div v-for="(events, date) in eventsByDate" :key="date">
           <h3 class="mb-4 text-xl font-semibold pb-2">
             {{ date }}
           </h3>
 
-          <!-- Todo: add hover:shadow-xl hover:-translate-y-1 or similar when you've added game details to the API. -->
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             <UCard
               v-for="event in events"
               :key="event.id"
-              class="transition-all duration-300"
             >
               <div>
                 <div class="text-center">
@@ -95,43 +93,23 @@ const formatTime = (dateString: string) => {
                 </div>
 
                 <div>
-                  <!-- Team 1. -->
-                  <div v-if="event.competitors[1]" class="flex items-center justify-between p-2 rounded-md">
-                    <div class="flex items-center">
+                  <!-- Teams. -->
+                  <div v-for="competitor in event.competitors" class="flex items-center justify-between p-2 rounded-md">
+                    <div class="flex items-center gap-2">
                       <img
-                        :src="event.competitors[1].teamLogo.url"
-                        :alt="event.competitors[1].teamLogo.alt"
+                        :src="competitor.teamLogo.url"
+                        :alt="competitor.teamLogo.alt"
                         class="w-10 h-10 object-contain"
                       />
                       <span class="text-sm font-semibold truncate">
-                        {{ event.competitors[1].teamLogo.alt }}
+                        {{ competitor.teamLogo.alt }}
                       </span>
                     </div>
                     <span
                       class="text-lg font-bold min-w-[2rem] text-center"
-                      :class="event.competitors[1].winner ? 'text-green-600 dark:text-green-400' : ''"
+                      :class="competitor.winner ? 'text-green-600 dark:text-green-400' : ''"
                     >
-                      {{ event.competitors[1].score }}
-                    </span>
-                  </div>
-
-                  <!-- Team 2. -->
-                  <div v-if="event.competitors[0]" class="flex items-center justify-between p-2 rounded-md">
-                    <div class="flex items-center">
-                      <img
-                        :src="event.competitors[0].teamLogo.url"
-                        :alt="event.competitors[0].teamLogo.alt"
-                        class="w-10 h-10 object-contain"
-                      />
-                      <span class="text-sm font-semibold truncate">
-                        {{ event.competitors[0].teamLogo.alt }}
-                      </span>
-                    </div>
-                    <span
-                      class="text-lg font-bold min-w-[2rem] text-center"
-                      :class="event.competitors[0].winner ? 'text-green-600 dark:text-green-400' : ''"
-                    >
-                      {{ event.competitors[0].score }}
+                      {{ competitor.score }}
                     </span>
                   </div>
                 </div>
