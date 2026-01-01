@@ -30,7 +30,7 @@ const isDark = computed({
             :icon="isDark ? 'i-lucide-moon' : 'i-lucide-sun'"
             color="neutral"
             variant="ghost"
-            class="cursor-pointer justify-self-end p-2"
+            class="cursor-pointer self-center justify-self-end p-2"
             @click="isDark = !isDark"
           />
         </ClientOnly>
