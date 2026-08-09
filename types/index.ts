@@ -80,6 +80,7 @@ export interface Game {
 export interface Schedule {
   season: number
   week: number
+  preSeason: boolean
   events: Game[]
 }
 

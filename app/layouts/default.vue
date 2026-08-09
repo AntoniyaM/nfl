@@ -13,7 +13,7 @@ const isDark = computed({
 </script>
 
 <template>
-  <div class="bg-slate-50 dark:bg-slate-900">
+  <div class="bg-slate-50 dark:bg-slate-900 overflow-x-hidden">
     <UContainer class="flex min-h-screen flex-col">
       <header class="grid grid-cols-3 gap-4 border-b border-gray-200 py-6 dark:border-gray-800">
         <NuxtLink to="/" class="flex items-center gap-2 font-mono text-2xl font-bold text-gray-800 dark:text-white">
