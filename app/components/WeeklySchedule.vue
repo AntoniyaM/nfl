@@ -4,13 +4,20 @@ import type { Game } from '~~/types'
 const { getSchedule } = useStore()
 const { state, asyncStatus } = getSchedule()
 
+// Everything below is formatted in the viewer's timezone, which the server only knows
+// once the browser has recorded it in a cookie.
+const timeZone = useViewerTimeZone()
+
 // Computed.
 const schedule = computed(() => state.value.data)
 const loadingSchedule = computed(() => asyncStatus.value === 'loading')
+const loading = computed(() => loadingSchedule.value || !timeZone.value)
 
-// Games grouped by date.
+// Games grouped by date, in the viewer's own timezone.
 const eventsByDate = computed(() => {
-  if (!schedule.value?.events) return {}
+  const zone = timeZone.value
+
+  if (!schedule.value?.events || !zone) return {}
 
   const sortedEvents = [...schedule.value.events].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
   const grouped: Record<string, Game[]> = {}
@@ -21,6 +28,7 @@ const eventsByDate = computed(() => {
       weekday: 'long',
       month: 'long',
       day: 'numeric',
+      timeZone: zone,
     })
 
     if (!grouped[dateKey]) {
@@ -37,7 +45,8 @@ const formatTime = (dateString: string) => {
   return date.toLocaleTimeString('en-US', {
     hour: 'numeric',
     minute: '2-digit',
-    timeZoneName: 'short'
+    timeZoneName: 'short',
+    timeZone: timeZone.value ?? undefined,
   })
 }
 </script>
@@ -63,7 +72,7 @@ const formatTime = (dateString: string) => {
       </p>
     </div>
 
-    <template v-if="loadingSchedule">
+    <template v-if="loading">
       <div class="flex flex-col gap-4">
         <USkeleton class="h-8 w-64" />
         <div class="grid gap-4">
@@ -99,7 +108,11 @@ const formatTime = (dateString: string) => {
 
                 <div>
                   <!-- Teams. -->
-                  <div v-for="competitor in event.competitors" class="flex items-center justify-between p-2 rounded-md">
+                  <div
+                    v-for="competitor in event.competitors"
+                    :key="competitor.teamLogo.alt"
+                    class="flex items-center justify-between p-2 rounded-md"
+                  >
                     <div class="flex items-center gap-2">
                       <img
                         :src="competitor.teamLogo.url"
