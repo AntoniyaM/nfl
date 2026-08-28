@@ -56,7 +56,7 @@ const formatTime = (dateString: string) => {
     <div class="mb-6 text-center">
       <h2 class="mb-2 text-3xl font-bold">
         <template v-if="!loadingSchedule && schedule">
-          <span class="relative inline-block">
+          <span class="relative inline-block tracking-tight">
             Week {{ schedule.week }} Schedule
             <UBadge v-if="schedule.preSeason" color="warning" variant="soft" size="md" class="absolute -top-4 rotate-10">
               Preseason
@@ -68,7 +68,7 @@ const formatTime = (dateString: string) => {
         </template>
       </h2>
       <p v-if="!loadingSchedule && schedule" class="text-lg text-muted">
-        Season {{ schedule.season }}
+        NFL Season {{ schedule.season }}
       </p>
     </div>
 

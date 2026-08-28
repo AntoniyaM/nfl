@@ -4,10 +4,18 @@
 @theme {
   --color-afc: var(--color-rose-700);
   --color-nfc: var(--color-blue-800);
-  --font-sans: 'Share Tech Mono', sans-serif;
-  --font-mono: 'New Amsterdam', monospace;
+  --font-sans: 'New Amsterdam', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
 }
 
 ::selection {
   background-color: var(--ui-bg-accented);
+}
+
+body {
+  @apply font-mono;
+}
+
+h2, h3, h4, h5, h6, p {
+  @apply tracking-tighter;
 }

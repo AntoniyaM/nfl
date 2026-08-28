@@ -16,7 +16,7 @@ const isDark = computed({
   <div class="bg-slate-50 dark:bg-slate-900 overflow-x-hidden">
     <UContainer class="flex min-h-screen flex-col">
       <header class="grid grid-cols-3 gap-4 border-b border-gray-200 py-6 dark:border-gray-800">
-        <NuxtLink to="/" class="flex items-center gap-2 font-mono text-2xl font-bold text-gray-800 dark:text-white">
+        <NuxtLink to="/" class="flex items-center gap-2 font-sans text-2xl font-bold text-gray-800 dark:text-white">
           <UIcon name="i-circum-football" class="size-12 text-amber-800" />
           <span class="hidden md:inline">NFL Season Stats</span>
         </NuxtLink>
