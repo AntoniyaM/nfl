@@ -26,7 +26,3 @@ defineProps<{
     </div>
   </NuxtLink>
 </template>
-
-<style scoped>
-/* Additional scoped styles if needed */
-</style>

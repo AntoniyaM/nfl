@@ -10,6 +10,18 @@ const isDark = computed({
     colorMode.preference = darkMode ? 'dark' : 'light'
   },
 })
+
+const themeColor = computed(() => (isDark.value ? '#0f172b' : '#fff'))
+
+// Get the theme color meta tag to change based on dark/light mode.
+useHead({
+  meta: [
+    {
+      name: 'theme-color',
+      content: themeColor,
+    }
+  ]
+})
 </script>
 
 <template>
